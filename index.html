@@ -79,7 +79,7 @@ body {
 
 var eb=0;
 var c=1;
-var x=0,y=0;
+var x=0,y=0,z=0;
 
 
 
@@ -95,10 +95,12 @@ if (window.DeviceMotionEvent != undefined) {
 		if( !$('#switch').prop('checked') ) return;
 		x=parseFloat(e.accelerationIncludingGravity.x).toFixed(3);
 		y=parseFloat(e.accelerationIncludingGravity.y).toFixed(3);
+		z=parseFloat(e.accelerationIncludingGravity.z).toFixed(3);
 		
 		
 		x=x*9;
 		y=y*9;
+		z=z*9;
 		
 		
 		
@@ -106,6 +108,7 @@ if (window.DeviceMotionEvent != undefined) {
 		
 		x=parseFloat(x).toFixed(1);
 		y=parseFloat(y).toFixed(1);
+		z=parseFloat(z).toFixed(1);
 		
 		
 		
@@ -122,7 +125,12 @@ if (window.DeviceMotionEvent != undefined) {
 			$("#content").append(y+";\n");
 		}
 		
-		
+		if( z>=45 || z<=-45 ){
+			$("#content").append(z+";!\n");
+		} else {
+			$("#content").append(z+";\n");
+		}
+				
 		
 		
 		$("#content").scrollTop(100000000000);
